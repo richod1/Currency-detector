@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.hetUsersCurrency = void 0;
+exports.getUserCurrency = void 0;
 const axios_1 = __importDefault(require("axios"));
 const currencyData = [
     { country: "US", currency: "USD", symbol: '' },
@@ -23,10 +23,10 @@ const getCurentcyByCountryCode = (countryCode) => {
     return currencyData.find((data) => data.country === countryCode);
 };
 const getUserByCountryCode = () => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield axios_1.default.get('http://ipapi.co/json/');
+    const response = yield axios_1.default.get('https://ipapi.co/json/');
     return response.data.country_code;
 });
-const hetUsersCurrency = () => __awaiter(void 0, void 0, void 0, function* () {
+const getUserCurrency = () => __awaiter(void 0, void 0, void 0, function* () {
     const countrycode = yield getUserByCountryCode();
     const currency = getCurentcyByCountryCode(countrycode);
     if (currency) {
@@ -36,4 +36,4 @@ const hetUsersCurrency = () => __awaiter(void 0, void 0, void 0, function* () {
         return 'Currency not found';
     }
 });
-exports.hetUsersCurrency = hetUsersCurrency;
+exports.getUserCurrency = getUserCurrency;

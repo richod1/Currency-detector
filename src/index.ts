@@ -19,12 +19,12 @@ const getCurentcyByCountryCode=(countryCode:string):CountryCurrency|undefined=>{
 }
 
 const getUserByCountryCode=async():Promise<string>=>{
-    const response=await axios.get('http://ipapi.co/json/');
+    const response=await axios.get('https://ipapi.co/json/');
     return response.data.country_code;
 }
 
 
-export const hetUsersCurrency=async():Promise<string>=>{
+export const getUserCurrency=async():Promise<string>=>{
     const countrycode=await getUserByCountryCode();
     const currency=getCurentcyByCountryCode(countrycode);
     if(currency){
